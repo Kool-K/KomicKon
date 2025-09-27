@@ -631,9 +631,9 @@ class KomicKon {
 }
 
 // Initialize the app when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new KomicKon();
-});
+
+// Initialize the app. Since this is a module, the DOM is ready.
+new KomicKon();
 
 // Fun easter egg - Konami code (enhanced for dark theme)
 document.addEventListener('keydown', (e) => {
