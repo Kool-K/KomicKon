@@ -1,0 +1,289 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700&display=swap');
+
+@layer components {
+  /* Dark theme comic panels */
+  .comic-panel-dark {
+    @apply border-4 border-gray-400 bg-gray-900 shadow-comic-dark rounded-lg p-6 relative;
+  }
+  
+  .comic-panel-sm-dark {
+    @apply border-2 border-gray-400 bg-gray-800 shadow-comic-sm-dark rounded-md p-4 relative;
+  }
+  
+  /* Dark theme buttons */
+  .comic-btn-dark {
+    @apply font-bangers text-xl border-4 border-gray-300 shadow-comic-sm-dark rounded-lg px-6 py-3 uppercase tracking-wide transition-all duration-200 transform hover:scale-105 active:scale-95;
+  }
+  
+  .comic-btn-primary-dark {
+    @apply comic-btn-dark bg-comic-red text-white hover:bg-red-400 border-red-300;
+  }
+  
+  .comic-btn-secondary {
+    @apply comic-btn-dark bg-comic-blue text-white hover:bg-cyan-400 border-cyan-300;
+  }
+  
+  .comic-btn-accent-dark {
+    @apply comic-btn-dark bg-comic-yellow text-black hover:bg-yellow-300 border-yellow-300;
+  }
+
+  .comic-btn-panel-dark {
+    @apply font-bangers text-lg border-4 border-gray-500 bg-gray-700 text-white shadow-comic-sm-dark rounded-lg px-4 py-3 uppercase tracking-wide transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-gray-600 hover:border-gray-400;
+  }
+
+  .comic-btn-panel-dark.active-panel {
+    @apply bg-comic-blue border-cyan-300 text-white ring-4 ring-comic-blue scale-105;
+  }
+  
+  /* Dark theme inputs */
+  .comic-input-dark {
+    @apply border-4 border-gray-500 bg-gray-800 text-white rounded-lg px-4 py-3 font-inter focus:outline-none focus:ring-4 focus:ring-comic-blue focus:border-comic-blue shadow-comic-sm-dark transition-all duration-200 placeholder-gray-400;
+  }
+
+  /* Dark theme select */
+  .comic-select-dark {
+    @apply border-4 border-gray-500 bg-gray-800 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-4 focus:ring-comic-blue focus:border-comic-blue shadow-comic-sm-dark transition-all duration-200;
+  }
+}
+
+/* Dark comic book themed background with halftone pattern */
+body {
+  background-color: #0a0a0a;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0),
+    radial-gradient(circle at 10px 10px, rgba(78, 205, 196, 0.05) 1px, transparent 0),
+    linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.02) 50%, transparent 60%),
+    linear-gradient(-45deg, transparent 40%, rgba(255, 107, 107, 0.02) 50%, transparent 60%);
+  background-size: 20px 20px, 40px 40px, 80px 80px, 80px 80px;
+  background-position: 0 0, 5px 5px, 0 0, 20px 20px;
+  animation: subtleFloat 30s ease-in-out infinite;
+}
+
+@keyframes subtleFloat {
+  0%, 100% { background-position: 0 0, 5px 5px, 0 0, 20px 20px; }
+  50% { background-position: 10px 10px, 15px 15px, 10px 10px, 30px 30px; }
+}
+
+/* Dark theme speech bubble */
+.speech-bubble-dark::before {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid #1f2937;
+  filter: drop-shadow(2px 2px 0px #9ca3af);
+  z-index: 10;
+}
+
+.speech-bubble-dark::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 22px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #1f2937;
+  z-index: 11;
+}
+
+/* Modal backdrop enhancement for dark theme */
+.modal-backdrop-dark {
+  backdrop-filter: blur(12px);
+  animation: modalFadeInDark 0.3s ease-out;
+}
+
+@keyframes modalFadeInDark {
+  from { opacity: 0; backdrop-filter: blur(0px); }
+  to { opacity: 1; backdrop-filter: blur(12px); }
+}
+
+/* Dark theme comic-style hover effects */
+.comic-panel-dark:hover {
+  transform: translateY(-2px);
+  box-shadow: 12px 12px 0px 0px rgba(156, 163, 175, 0.8);
+  transition: all 0.2s ease-out;
+}
+
+.comic-panel-sm-dark:hover {
+  transform: translateY(-1px) rotate(0.5deg);
+  transition: transform 0.2s ease-out;
+}
+
+/* Loading animation enhancements for dark theme */
+#loading-animation .comic-panel-dark {
+  animation: bounceInDark 0.5s ease-out;
+}
+
+@keyframes bounceInDark {
+  0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+  50% { transform: scale(1.05) rotate(2deg); }
+  70% { transform: scale(0.9) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Dark theme notification styles */
+.notification-dark {
+  animation: slideInRightDark 0.3s ease-out, slideOutRightDark 0.3s ease-in 2.7s;
+}
+
+@keyframes slideInRightDark {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRightDark {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+
+/* Dark theme style button active state */
+.style-btn.active {
+  @apply bg-comic-orange ring-4 ring-comic-yellow scale-105 border-orange-300;
+  animation: activeButtonPulseDark 0.3s ease-out;
+}
+
+@keyframes activeButtonPulseDark {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1.05); }
+}
+
+/* Dark theme comic panel generation animation */
+.comic-panel-reveal-dark {
+  animation: panelRevealDark 0.6s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.8) rotate(-5deg);
+}
+
+@keyframes panelRevealDark {
+  0% { opacity: 0; transform: scale(0.8) rotate(-5deg); }
+  60% { opacity: 1; transform: scale(1.05) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* Dark theme enhanced form focus states */
+.comic-input-dark:focus, .comic-select-dark:focus {
+  box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.4), 4px 4px 0px 0px rgba(156, 163, 175, 1);
+}
+
+/* Dark theme decorative elements */
+.decorative-star-dark {
+  animation: starTwinkleDark 2s ease-in-out infinite;
+  color: #FFF5B7;
+}
+
+@keyframes starTwinkleDark {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.decorative-explosion-dark {
+  animation: explosionPulseDark 1.5s ease-in-out infinite;
+  color: #FF6B6B;
+}
+
+@keyframes explosionPulseDark {
+  0%, 100% { opacity: 0.9; transform: scale(1) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(8deg); }
+}
+
+/* Dark theme shadows */
+.shadow-comic-dark {
+  box-shadow: 8px 8px 0px 0px rgba(156, 163, 175, 0.8);
+}
+
+.shadow-comic-sm-dark {
+  box-shadow: 4px 4px 0px 0px rgba(156, 163, 175, 0.6);
+}
+
+/* Provider selection styling */
+#provider-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+/* Special glow effects for dark theme */
+.comic-btn-primary-dark:hover {
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.5), 4px 4px 0px 0px rgba(239, 68, 68, 1);
+}
+
+.comic-btn-secondary:hover {
+  box-shadow: 0 0 20px rgba(78, 205, 196, 0.5), 4px 4px 0px 0px rgba(6, 182, 212, 1);
+}
+
+.comic-btn-accent-dark:hover {
+  box-shadow: 0 0 20px rgba(255, 245, 183, 0.3), 4px 4px 0px 0px rgba(253, 224, 71, 1);
+}
+
+.comic-btn-panel-dark:hover {
+  box-shadow: 0 0 15px rgba(107, 114, 128, 0.4), 4px 4px 0px 0px rgba(156, 163, 175, 0.8);
+}
+
+.comic-btn-panel-dark.active-panel {
+  box-shadow: 0 0 20px rgba(78, 205, 196, 0.6), 4px 4px 0px 0px rgba(6, 182, 212, 1);
+}
+
+/* Enhanced text shadows for better readability on dark background */
+.font-bangers {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 6px;
+  border: 2px solid #1f2937;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Panel selector animation */
+.panel-btn {
+  transition: all 0.2s ease-out;
+}
+
+.panel-btn:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Progress bar animation */
+#progress-bar {
+  transition: width 0.3s ease-out;
+}
+
+/* Dynamic grid adjustment for different panel counts */
+.comic-grid-2 {
+  @apply grid-cols-1 md:grid-cols-2;
+}
+
+.comic-grid-3 {
+  @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.comic-grid-4 {
+  @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-4;
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KomicKon - Comic Creator</title>
+    
+    <meta name="description" content="Create amazing comic strips with AI - KomicKon brings your stories to life!" />
+    <meta name="author" content="Dualite Alpha" />
+    <meta property="og:title" content="KomicKon - Comic Creator" />
+    <meta property="og:description" content="Create amazing comic strips with AI - KomicKon brings your stories to life!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://d33wubrfki0l68.cloudfront.net/68d779ed7128a21438fad1df/screenshot_2025-09-27-05-45-30-0000.webp" />
+    <meta property="og:image:alt" content="KomicKon Comic Creator Preview" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="KomicKon - Comic Creator" />
+    <meta name="twitter:description" content="Create amazing comic strips with AI - KomicKon brings your stories to life!" />
+    <meta name="twitter:site" content="@dualitedev" />
+    <meta name="twitter:image" content="https://d33wubrfki0l68.cloudfront.net/68d779ed7128a21438fad1df/screenshot_2025-09-27-05-45-30-0000.webp" />
+
+    <link rel="canonical" href="https://mic-book-web-app-jwwd-dualite.netlify.app" />
+    <link href="./style.css" rel="stylesheet">
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "KomicKon",
+          "url": "https://mic-book-web-app-jwwd-dualite.netlify.app",
+          "description": "Create amazing comic strips with AI - KomicKon brings your stories to life!",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Dualite Alpha"
+          }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-comic-dark text-white">
+    <!-- Header -->
+    <header class="p-4 lg:p-8 relative">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="font-bangers text-4xl lg:text-6xl text-comic-yellow transform -rotate-2 drop-shadow-lg">
+                🦸 KomicKon
+            </h1>
+            <button id="settings-btn" class="comic-btn-secondary flex items-center gap-2 hover:rotate-1 transition-transform">
+                <span class="text-xl">⚙️</span>
+                <span class="hidden sm:inline">Settings</span>
+            </button>
+        </div>
+        <!-- Decorative comic elements -->
+        <div class="absolute top-2 left-1/4 text-comic-yellow text-2xl animate-bounce">⭐</div>
+        <div class="absolute top-8 right-1/4 text-comic-red text-xl animate-pulse">💥</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="px-4 lg:px-8 pb-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Input Form Panel -->
+            <div class="comic-panel-dark mb-8 relative">
+                <div class="speech-bubble-dark relative">
+                    <h2 class="font-bangers text-3xl lg:text-4xl mb-6 text-center text-comic-yellow transform rotate-1 drop-shadow-sm">
+                        Create Your Comic Adventure!
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Prompt Input -->
+                        <div class="relative">
+                            <label for="prompt-input" class="block font-bangers text-xl mb-2 text-comic-yellow drop-shadow-sm">
+                                📝 Tell Your Story:
+                            </label>
+                            <textarea 
+                                id="prompt-input" 
+                                class="comic-input-dark w-full h-32 resize-none" 
+                                placeholder="A brave superhero saves the city from giant robots. The battle is intense. Victory is achieved through teamwork."
+                                maxlength="500">
+                            </textarea>
+                            <div class="text-right mt-1">
+                                <span id="char-count" class="font-inter text-sm text-gray-300 bg-gray-800 px-2 py-1 rounded border border-gray-600">0/500</span>
+                            </div>
+                        </div>
+
+                        <!-- Style and Panel Configuration -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- Style Buttons -->
+                            <div>
+                                <label class="block font-bangers text-xl mb-3 text-comic-yellow drop-shadow-sm">🎨 Choose Your Style:</label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button class="style-btn comic-btn-accent-dark" data-style="manga">
+                                        🎌 Manga
+                                    </button>
+                                    <button class="style-btn comic-btn-accent-dark" data-style="vintage">
+                                        📻 Vintage
+                                    </button>
+                                    <button class="style-btn comic-btn-accent-dark" data-style="toon">
+                                        🎭 Toon
+                                    </button>
+                                    <button class="style-btn comic-btn-accent-dark" data-style="superhero">
+                                        🦸 Superhero
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Panel Count Selector -->
+                            <div>
+                                <label class="block font-bangers text-xl mb-3 text-comic-blue drop-shadow-sm">📋 Number of Panels:</label>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <button class="panel-btn comic-btn-panel-dark" data-panels="2">
+                                        📖 2 Panels
+                                    </button>
+                                    <button class="panel-btn comic-btn-panel-dark active-panel" data-panels="3">
+                                        📚 3 Panels
+                                    </button>
+                                    <button class="panel-btn comic-btn-panel-dark" data-panels="4">
+                                        📰 4 Panels
+                                    </button>
+                                </div>
+                                <div class="mt-2 text-center">
+                                    <span id="panel-preview" class="font-inter text-sm text-gray-300 bg-gray-800 px-3 py-1 rounded border border-gray-600">
+                                        Creating 3-panel comic strip
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Provider Selection and Generate Button -->
+                        <div class="flex flex-col sm:flex-row gap-4 items-center justify-center pt-4">
+                            <div class="flex flex-col items-center">
+                                <label for="provider-select" class="font-bangers text-lg text-comic-yellow mb-2">🤖 AI Provider:</label>
+                                <select id="provider-select" class="comic-select-dark font-inter text-sm">
+                                    <option value="openai">OpenAI DALL-E</option>
+                                    <option value="replicate">Replicate</option>
+                                    <option value="midjourney">Midjourney</option>
+                                    <option value="stability">Stability AI</option>
+                                    <option value="huggingface">Hugging Face</option>
+                                </select>
+                            </div>
+                            <div class="text-center">
+                                <button id="generate-btn" class="comic-btn-primary-dark text-2xl lg:text-3xl px-12 py-4 relative overflow-hidden">
+                                    <span class="relative z-10">⚡ Generate Comic! ⚡</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comic Strip Container -->
+        <section id="comic-strip-container" class="max-w-6xl mx-auto hidden">
+            <div class="comic-panel-dark">
+                <h3 class="font-bangers text-3xl mb-6 text-center text-comic-blue transform -rotate-1 drop-shadow-sm">
+                    🎨 Your Comic Strip
+                </h3>
+                <div id="comic-panels" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Generated comic panels will appear here -->
+                </div>
+                <div class="text-center mt-8 space-x-4">
+                    <button id="new-comic-btn" class="comic-btn-secondary font-bangers px-6 py-3">
+                        🔄 Create New
+                    </button>
+                    <button id="download-btn" class="comic-btn-accent-dark font-bangers px-6 py-3">
+                        💾 Download
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Animation -->
+        <div id="loading-animation" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm">
+            <div class="comic-panel-dark text-center p-8">
+                <div class="animate-spin text-6xl mb-4">⚡</div>
+                <h3 class="font-bangers text-2xl text-comic-yellow drop-shadow-sm">POW! Generating Your Comic...</h3>
+                <p id="loading-progress" class="font-inter mt-2 text-gray-300">Preparing your story...</p>
+                <div class="mt-4 w-32 h-2 bg-gray-700 rounded-full mx-auto overflow-hidden">
+                    <div id="progress-bar" class="h-full bg-comic-blue rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-8 mt-12">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="comic-panel-sm-dark">
+                <p class="font-bangers text-lg text-comic-yellow drop-shadow-sm">
+                    Made with ❤️ for Comic Creators Everywhere!
+                </p>
+                <p class="font-inter text-sm text-gray-300 mt-2 opacity-90">
+                    Powered by AI • Built with Dualite Alpha
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm">
+        <div class="comic-panel-dark max-w-lg w-full mx-4 p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="modal-title" class="font-bangers text-2xl text-comic-yellow drop-shadow-sm">⚙️ API Key Required</h3>
+                <button id="close-modal-btn" class="text-2xl text-gray-300 hover:text-comic-red transition-colors border-2 border-gray-600 rounded-full w-8 h-8 flex items-center justify-center hover:bg-gray-800">✕</button>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="text-center p-3 bg-gray-800 border-2 border-gray-600 rounded-lg">
+                    <p id="modal-description" class="font-inter text-sm text-gray-300">
+                        🔒 Please add your API key to start generating comics. Your key is stored locally and never shared.
+                    </p>
+                </div>
+
+                <!-- Dynamic API Key Input Container -->
+                <div id="api-key-container">
+                    <!-- API key input will be dynamically inserted here -->
+                </div>
+                
+                <div class="flex gap-3 pt-4">
+                    <button id="save-key-btn" class="flex-1 comic-btn-primary-dark font-bangers px-4 py-3">
+                        💾 Save Key
+                    </button>
+                    <button id="clear-key-btn" class="flex-1 comic-btn-secondary font-bangers px-4 py-3">
+                        🗑️ Clear Key
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
