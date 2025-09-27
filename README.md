@@ -1,10 +1,9 @@
 # 🦸 KomicKon - AI Comic Creator
 
-![KomicKon Screenshot](https://mic-book-web-app-jwwd-dualite.netlify.app/screenshot.png) 
+![KomicKon Screenshot](./.github/pic.png) 
 KomicKon is a fun, single-page web application that uses the power of AI to turn your stories into multi-panel comic strips. With a vibrant, comic-book-themed interface, you can choose your art style, select the number of panels, and bring your imagination to life!
 
-**Live Demo:** [**https://mic-book-web-app-jwwd-dualite.netlify.app/**](https://mic-book-web-app-jwwd-dualite.netlify.app/)
-
+**Live Demo:** [**https://kool-k.github.io/KomicKon/**](https://kool-k.github.io/KomicKon/)
 ---
 
 ### ## ✨ Features
