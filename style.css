@@ -5,7 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700&display=swap');
 
 @layer components {
-  /* Dark theme comic panels */
+  /* Dark theme comic panels*/
+  
   .comic-panel-dark {
     @apply border-4 border-gray-400 bg-gray-900 shadow-comic-dark rounded-lg p-6 relative;
   }
