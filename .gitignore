@@ -1,1 +1,11 @@
+# Dependencies
 node_modules/
+
+# Build output
+dist/
+
+# Vite cache
+.vite/
+
+# Environment variables - to prevent accidentally committing API keys
+.env*
