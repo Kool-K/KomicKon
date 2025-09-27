@@ -1,3 +1,5 @@
+import './style.css';
+
 class KomicKon {
     constructor() {
         this.selectedStyle = 'superhero';
