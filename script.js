@@ -171,18 +171,16 @@ class KomicKon {
     }
 
     selectStyle(selectedBtn) {
-        // Remove active state from all buttons
-        this.styleButtons.forEach(btn => {
-            btn.classList.remove('bg-comic-orange', 'ring-4', 'ring-comic-yellow', 'scale-105', 'border-orange-300');
-            btn.classList.add('bg-comic-yellow', 'border-yellow-300');
-        });
+    // Remove 'active' state from all style buttons
+    this.styleButtons.forEach(btn => {
+        btn.classList.remove('active');
+    });
 
-        // Add active state to selected button
-        selectedBtn.classList.remove('bg-comic-yellow', 'border-yellow-300');
-        selectedBtn.classList.add('bg-comic-orange', 'ring-4', 'ring-comic-yellow', 'scale-105', 'border-orange-300');
-        
-        this.selectedStyle = selectedBtn.dataset.style;
-    }
+    // Add 'active' state to the selected button
+    selectedBtn.classList.add('active');
+    
+    this.selectedStyle = selectedBtn.dataset.style;
+}
 
     selectPanelCount(selectedBtn) {
         // Remove active state from all panel buttons
